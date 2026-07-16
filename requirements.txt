@@ -1,2 +1,4 @@
 faster-whisper
 requests
+pandas
+joblib
