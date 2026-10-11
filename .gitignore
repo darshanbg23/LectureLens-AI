@@ -1,1 +1,11 @@
+__pycache__/
+*.pyc
 rag_env/
+.env
+docs/
+test/
+data/
+index/
+*.mp4
+*.wav
+*.mp3

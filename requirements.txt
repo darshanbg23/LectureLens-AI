@@ -1,4 +1,6 @@
 faster-whisper
 requests
 pandas
-joblib
+numpy
+faiss-cpu
+flask
