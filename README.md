@@ -1,12 +1,19 @@
 <p align="center">
+
   <h1 align="center">LectureLens AI</h1>
   <p align="center">
     <strong>Search inside lecture videos using natural-language questions and receive answers with relevant lecture timestamps.</strong>
   </p>
+
   <p align="center">
-    <img src="https://img.shields.io/badge/python-3.10+-blue?logo=python&logoColor=white" alt="Python 3.10+">
-    <img src="https://img.shields.io/badge/flask-web_ui-black?logo=flask&logoColor=white" alt="Flask">
-    <img src="https://img.shields.io/badge/ollama-local_AI-blueviolet?logo=ollama&logoColor=white" alt="Ollama">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask">
+    <img src="https://img.shields.io/badge/FFmpeg-007808?style=for-the-badge&logo=ffmpeg&logoColor=white" alt="FFmpeg">
+    <img src="https://img.shields.io/badge/Faster--Whisper-14B8A6?style=for-the-badge" alt="Faster-Whisper">
+    <img src="https://img.shields.io/badge/BGE--M3-F59E0B?style=for-the-badge" alt="BGE-M3">
+    <img src="https://img.shields.io/badge/FAISS-2563EB?style=for-the-badge" alt="FAISS">
+    <img src="https://img.shields.io/badge/Ollama-7C3AED?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama">
+    <img src="https://img.shields.io/badge/Llama_3.2-EC4899?style=for-the-badge" alt="Llama 3.2">
   </p>
 </p>
 
