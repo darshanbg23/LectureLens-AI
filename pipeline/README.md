@@ -4,12 +4,12 @@ This directory contains scripts that process lecture videos into searchable vect
 
 ## Workflow
 
-```
-flowchart LR
-    A[Video] --> B[Audio]
-    B --> C[Transcript and Chunks]
-    C --> D[Embeddings]
-    D --> E[FAISS Index]
+```mermaid
+flowchart TD
+    A["Video"] --> B["Audio"]
+    B --> C["Transcript and Chunks"]
+    C --> D["Embeddings"]
+    D --> E["FAISS Index"]
 ```
 
 When a user opens the web application and creates a new course, the application stores the course and its uploaded lecture videos under `data/courses/`. Each course is identified by a unique `course_id`, and each lecture is organized using its `lecture_id`.
