@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LectureLens AI - My Courses</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "background": "#0a0d14",
+            "surface": "#0a0d14",
+            "surface-card": "#10141e",
+            "surface-card-hover": "#131926",
+            "border-clean": "#262d40",
+            "accent-purple": "#8b5cf6",
+            "accent-purple-hover": "#7c3aed",
+            "on-surface": "#f1f5f9",
+            "on-surface-variant": "#cbd5e1",
+            "primary": "#d0bcff",
+            "primary-container": "#8b5cf6",
+            "outline-variant": "#262d40"
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+</script>
+</head>
+<body class="bg-[#0a0d14] font-sans text-[#f1f5f9] antialiased min-h-screen flex flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0d14]/95 backdrop-blur-xl border-b border-[#262d40]">
+<div class="max-w-7xl mx-auto h-16 px-6 flex items-center justify-between gap-6">
+<div class="flex items-center gap-8 flex-shrink-0">
+<a class="flex items-center gap-2.5 group" href="/">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#8b5cf6] via-[#7c3aed] to-[#6366f1] flex items-center justify-center shadow-[0_0_18px_rgba(139,92,246,0.45)] transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-white text-[20px]">auto_awesome</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-[17px] font-bold tracking-tight text-white">LectureLens</span>
+<span class="px-2 py-0.5 rounded-full bg-[#8b5cf6]/20 border border-[#8b5cf6]/40 text-[#c4b5fd] text-[10px] font-bold tracking-wider uppercase">AI</span>
+</div>
+</a>
+<nav class="flex items-center gap-1.5">
+<a class="px-3.5 py-1.5 rounded-lg bg-[#8b5cf6]/15 text-[#d0bcff] border border-[#8b5cf6]/30 text-sm font-semibold transition-colors" href="/">
+            Courses
+          </a>
+</nav>
+</div>
+<div class="flex-1 max-w-md hidden md:block">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-slate-400 text-[18px] pointer-events-none">search</span>
+<input class="w-full h-9 pl-10 pr-16 bg-[#10141e] border border-[#262d40] rounded-xl text-white placeholder:text-slate-400 text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]/50 transition-all" placeholder="Search courses..." type="text"/>
+<div class="absolute right-2.5 px-1.5 py-0.5 rounded border border-[#262d40] bg-[#131926] font-mono text-[10px] text-slate-400 pointer-events-none flex items-center gap-1">
+<span>Ctrl</span><span>K</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<button aria-label="Notifications" class="relative w-9 h-9 rounded-xl bg-[#10141e] hover:bg-[#131926] border border-[#262d40] flex items-center justify-center text-slate-300 hover:text-white transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center gap-2.5 pl-1 pr-3 py-1 rounded-full bg-[#10141e] hover:bg-[#131926] border border-[#262d40] transition-colors" type="button">
+<div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#8b5cf6] to-[#a855f7] flex items-center justify-center text-white font-semibold text-xs shadow-inner">
+<span>U</span>
+</div>
+<span class="text-sm text-slate-200 font-medium">User</span>
+<span class="material-symbols-outlined text-slate-400 text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 pt-24 pb-16 px-6">
+<div class="max-w-7xl mx-auto space-y-8">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#262d40] pb-6">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-3xl font-extrabold tracking-tight text-white">My Courses</h1>
+<span id="course-count-badge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#131926] border border-[#262d40] text-slate-200">0 Active</span>
+</div>
+<p class="text-sm text-slate-300 mt-1.5 font-normal">
+            Manage and explore your enrolled and created courses
+          </p>
+</div>
+<button id="btn-create-course" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#8b5cf6] hover:bg-[#7c3aed] text-white text-sm font-semibold shadow-[0_0_24px_rgba(139,92,246,0.35)] hover:shadow-[0_0_28px_rgba(139,92,246,0.5)] transition-all flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[19px]">add</span>
+<span>Create New Course</span>
+</button>
+</div>
+<div id="courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+</div>
+<div id="empty-state" class="hidden text-center py-20">
+    <div class="w-16 h-16 rounded-2xl bg-[#131926] border border-[#262d40] flex items-center justify-center mx-auto mb-4 text-[#8b5cf6]">
+        <span class="material-symbols-outlined text-3xl">school</span>
+    </div>
+    <h3 class="text-lg font-semibold text-white">No courses yet</h3>
+    <p class="text-sm text-slate-400 mt-2">Create a new course to get started.</p>
+</div>
+</div>
+</main>
+
+
+<div id="create-course-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div class="bg-[#10141e] border border-[#262d40] rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
+        <h2 class="text-xl font-bold text-white mb-6">Create New Course</h2>
+        
+        <form id="create-course-form" class="space-y-4" onsubmit="event.preventDefault();">
+            <div>
+                <label for="courseNameInput" class="block text-sm font-medium text-slate-300 mb-1.5">Course Name <span class="text-[#8b5cf6]">*</span></label>
+                <input type="text" id="courseNameInput" required class="w-full h-10 px-3 bg-[#0a0d14] border border-[#262d40] rounded-xl text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]/50 transition-all" placeholder="e.g. Operating Systems">
+                <p id="courseNameError" class="hidden text-red-400 text-xs mt-1">Course name is required.</p>
+            </div>
+            
+            <div>
+                <label for="courseInstructorInput" class="block text-sm font-medium text-slate-300 mb-1.5 flex justify-between">
+                    Instructor <span class="text-slate-500 text-xs font-normal">Optional</span>
+                </label>
+                <input type="text" id="courseInstructorInput" class="w-full h-10 px-3 bg-[#0a0d14] border border-[#262d40] rounded-xl text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]/50 transition-all" placeholder="e.g. Dr. Smith">
+            </div>
+
+            <div>
+                <label for="courseSemesterInput" class="block text-sm font-medium text-slate-300 mb-1.5 flex justify-between">
+                    Semester <span class="text-slate-500 text-xs font-normal">Optional</span>
+                </label>
+                <input type="text" id="courseSemesterInput" class="w-full h-10 px-3 bg-[#0a0d14] border border-[#262d40] rounded-xl text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]/50 transition-all" placeholder="e.g. Fall 2026">
+            </div>
+
+            <div>
+                <label for="courseDescriptionInput" class="block text-sm font-medium text-slate-300 mb-1.5 flex justify-between">
+                    Description <span class="text-slate-500 text-xs font-normal">Optional</span>
+                </label>
+                <textarea id="courseDescriptionInput" rows="2" class="w-full p-3 bg-[#0a0d14] border border-[#262d40] rounded-xl text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]/50 transition-all resize-none" placeholder="Brief description of the course"></textarea>
+            </div>
+
+            <div class="pt-4 flex justify-end gap-3 border-t border-[#262d40] mt-6">
+                <button type="button" id="cancelCreateCourseBtn" class="px-4 py-2 rounded-xl bg-[#131926] hover:bg-[#262d40] border border-[#262d40] text-slate-300 text-sm font-semibold transition-colors">
+                    Cancel
+                </button>
+                <button type="submit" id="submitCreateCourseBtn" class="px-5 py-2 rounded-xl bg-[#8b5cf6] hover:bg-[#7c3aed] text-white text-sm font-semibold shadow-md shadow-[#8b5cf6]/20 transition-all">
+                    Create Course
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="delete-course-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div class="bg-[#10141e] border border-[#262d40] rounded-2xl shadow-2xl w-full max-w-sm p-6 relative text-center">
+        <div class="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-[24px]">warning</span>
+        </div>
+        <h2 class="text-xl font-bold text-white mb-2">Delete Course?</h2>
+        <p class="text-slate-300 text-sm mb-1 font-medium" id="deleteCourseNameDisplay">Course Name</p>
+        <p class="text-slate-400 text-sm mb-6">
+            This will permanently delete the course, its lectures, and all associated data. This action cannot be undone.
+        </p>
+        <p id="deleteCourseError" class="hidden text-red-400 text-xs mb-4"></p>
+        
+        <div class="flex justify-center gap-3">
+            <button type="button" id="cancelDeleteCourseBtn" class="px-4 py-2 rounded-xl bg-[#131926] hover:bg-[#262d40] border border-[#262d40] text-slate-300 text-sm font-semibold transition-colors flex-1">
+                Cancel
+            </button>
+            <button type="button" id="submitDeleteCourseBtn" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold shadow-md shadow-red-600/20 transition-all flex-1">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body></html>
