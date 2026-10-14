@@ -1,6 +1,6 @@
 <p align="center">
 
-  <h1 align="center">LectureLens AI</h1>
+  <h1 align="center">LectureLens AI: Retrieval-Augmented Learning Assistant</h1>
   <p align="center">
     <strong>Search inside lecture videos using natural-language questions and receive answers with relevant lecture timestamps.</strong>
   </p>
